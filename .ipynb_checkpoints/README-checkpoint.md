@@ -11,7 +11,17 @@ output: github_document
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of easy.mlp is to ...
+The goal of easy.mlp is to quickly and easily build a neural network to fit tabular data.
+
+* Supports the usage of the R `formula` class.
+* Normalizes input and output data to the range of 0-1.
+* One-hot encodes input factor data.
+* Allows for any number of hidden layers and nodes.
+* Supports regression, classification, and binary classification networks.
+* Multiple pre-defined activation functions (and supports user-defined functions).
+* Mini-batch gradient descent using the ADAM optimizer.
+* Randomly splits data into training and validation data.
+* Simple plotting of metrics and predictions for new data.
 
 ## Installation
 
@@ -27,9 +37,19 @@ This is a basic example which shows you how to solve a common problem:
 
 
 ```r
-library(easy.mlp)
+source("R/*")
 #> Error in library(easy.mlp): there is no package called 'easy.mlp'
-## basic example code
+
+data(iris)
+
+network <- create.mlp(Species ~ ., data=iris, hidden=c(5,5,5))
+#> Error in create.mlp(Species ~ ., data = iris, hidden = c(5, 5, 5)): could not find function "create.mlp"
+
+network <- train(network, 100)
+#> Error in train(network, 100): could not find function "train"
+
+plot(network)
+#> Error in plot(network): object 'network' not found
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
