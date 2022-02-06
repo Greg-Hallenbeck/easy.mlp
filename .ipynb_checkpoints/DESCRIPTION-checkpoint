@@ -1,0 +1,16 @@
+Package: easy.mlp
+Title: Easy-To-Use Multilayer Perceptron
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Gregory",
+           family = "Hallenbeck",
+           role = c("aut", "cre"),
+           email = "greg.hallenbeck@gmail.com")
+Description: Build, fit, and analyze data using a multilayer perceptron. Built-in functionality for working with numeric and factor input variables, regression and classification tasks.
+Depends: R (>= 3.6.2)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Imports: mltools,
+    data.table
