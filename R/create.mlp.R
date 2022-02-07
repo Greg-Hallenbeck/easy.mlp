@@ -1,13 +1,5 @@
 #' Initialize a Neural Network.
-#' @description Create a new neural network to fitting tabular data.
-#'
-#' The network is initialized randomized weights and should be trained with the `train()` function.
-#' * Input and output data are normalized, with factor variables one-hot encoded.
-#' * Handles both regression and classification networks.
-#' * Splits input dataframe into training and validation data.
-#' * Customizable hidden layers of fully-connected nodes.
-#' * ADAM optimizer with minibatch normalization with tunable hyperparameters.
-#' * Supports user-defined activation functions. See `relu` or `leaky.relu` for examples.
+#' @description Create a new neural network to fitting tabular data. The network is initialized randomized weights and should be trained with the `train()` function.
 #' 
 #' @param formula An object of class `formula` describing the model to be fit.
 #' @param data A `data.frame` object containing the training and validation data.
@@ -24,7 +16,7 @@
 #' @return An object of class `mlp`
 #' @examples
 #'  create.mlp(Species ~ ., data=iris, hidden=c(5,5,5), type="classification")
-
+#' @export
 create.mlp <- function(formula, data=NULL, hidden=c(), type=NULL,
         activation="leaky.relu", valid.split = 0.25, randomize=TRUE,
         learning.rate = 0.001, momentum.beta=0.9, rmsprop.beta=0.999, batch.size=64)

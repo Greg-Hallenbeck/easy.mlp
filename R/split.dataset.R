@@ -23,13 +23,13 @@ split.dataset <- function(formula, data)
     # Split out the X and Y variables
     
     raw.Y = mf[,1] # Split out the Y variable
-    Y = mltools::one_hot(as.data.table(raw.Y)) # one-hot encode the Y, if its a factor
+    Y = mltools::one_hot(data.table::as.data.table(raw.Y)) # one-hot encode the Y, if its a factor
     Y = t(as.matrix(Y)) # Convert to a row vector
     rownames(Y) = NULL # Strip the column and row names from the matrix
     colnames(Y) = NULL
     
     X = dataset[,2:ncol(dataset)] # Split out the X variables
-    #X = mltools::one_hot(as.data.table(X)) # one-hot encode any factors
+    #X = mltools::one_hot(data.table::as.data.table(X)) # one-hot encode any factors
     X = t(as.matrix(X)) # Convert to a row vector (each column is one observation)
     rownames(X) = NULL # Strip the column and row names from the matrix
     colnames(X) = NULL

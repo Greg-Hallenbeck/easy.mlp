@@ -1,7 +1,6 @@
 #' Initialize a Neural Network.
-#' @description Create a new neural network based on a formula and data frame.
-#'
-#' This function creates a new neural network with randomized weights to be trained with the `train()` function.
+#' @description Create a new neural network to fitting tabular data. The network is initialized randomized weights and should be trained with the `train()` function.
+#' 
 #' @param formula An object of class `formula` describing the model to be fit.
 #' @param data A `data.frame` object containing the training and validation data.
 #' @param hidden A vector indicating how many layers and hidden notes the network will have. Passing c(4,5,2) creates a network with 3 hidden layers with 4, 5, and 2 nodes, respectively.
@@ -17,7 +16,7 @@
 #' @return An object of class `mlp`
 #' @examples
 #'  create.mlp(Species ~ ., data=iris, hidden=c(5,5,5), type="classification")
-
+#' @export
 create.mlp <- function(formula, data=NULL, hidden=c(), type=NULL,
         activation="leaky.relu", valid.split = 0.25, randomize=TRUE,
         learning.rate = 0.001, momentum.beta=0.9, rmsprop.beta=0.999, batch.size=64)

@@ -5,6 +5,7 @@
 #' @examples
 #'     network <- train(network, 100)
 #'     net.trained <- train(net, 100)
+#' @export
 train <- function(network, epochs=1000)
 {
     # These variables just set to make the code more readable

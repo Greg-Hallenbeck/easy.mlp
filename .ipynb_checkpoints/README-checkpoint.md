@@ -25,10 +25,12 @@ The goal of easy.mlp is to quickly and easily build a neural network to fit tabu
 
 ## Installation
 
-You can install the released version of easy.mlp from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of easy.mlp from github with:
 
 ``` r
-install.packages("easy.mlp")
+library(devtools)
+
+install_github("Greg-Hallenbeck/easy.mlp")
 ```
 
 ## Example
@@ -37,19 +39,30 @@ This is a basic example which shows you how to solve a common problem:
 
 
 ```r
-source("R/*")
-#> Error in library(easy.mlp): there is no package called 'easy.mlp'
+library(easy.mlp)
 
 data(iris)
 
-network <- create.mlp(Species ~ ., data=iris, hidden=c(5,5,5))
-#> Error in create.mlp(Species ~ ., data = iris, hidden = c(5, 5, 5)): could not find function "create.mlp"
+# Initial network creation is stochastic.
+set.seed(8675309)
+net <- create.mlp(Species ~ ., data=iris, hidden=c(5,5,5), type="classification")
 
-network <- train(network, 100)
-#> Error in train(network, 100): could not find function "train"
+# This line can be run multiple times to train another 1,000 epochs
+net <- train(net, 1000)
 
-plot(network)
-#> Error in plot(network): object 'network' not found
+# Plot the loss and accuracy of the network
+par(mfrow=c(1,2))
+options(repr.plot.width=10, repr.plot.height=5.5)
+
+plot(net, ylim=c(0.03, 2))
+plot(net, metric="accuracy", ylim=c(0,1))
+```
+
+<img src="man/figures/README-example-1.png" title="plot of chunk example" alt="plot of chunk example" width="100%" />
+
+```r
+
+# Predict species for a new data point.
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

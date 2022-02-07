@@ -9,24 +9,24 @@
 #'    predict(network, type="labels")
 #'    predict(network, newdata="valid", type="labels")
 #'    predict(network, newdata=test.data)
-predict.mlp <- function(network, newdata=NULL, type="numeric")
+#' @export
+predict.mlp <- function(network, newdata="train", type="numeric")
 {
     # Does the user want to use the training data?
     if (is.null(newdata) || newdata == "train")
     {
         newdata = network$train$X
     }
-    # Does the user want to use the validation data?
-    else if (newdata == "valid")
-    {
-        newdata = network$valid$X
-    }
-    # New data is provided. Process it into a matrix
-    # and apply normalization
-    else
+    # Is new data provided? Process it into a matrix and apply normalization
+    else if (is.data.frame(newdata))
     {
         newdata = split.dataset(network$formula, newdata)$X
         newdata = (newdata - network$train$xbar)/network$train$sigma
+    }
+    # Assume user wants to use the validation data.
+    else
+    {
+        newdata = network$valid$X
     }
     
     # Perform the forward propagation on the processed data
@@ -38,7 +38,7 @@ predict.mlp <- function(network, newdata=NULL, type="numeric")
 
     # This is used to put labels on the output
     # Instead of returning a one-hot encoded Y vector
-    if (type == "labels")
+    if (type == "labels" | type == "class" | type == "response")
     {
         # Figure out which label index each Y prediction has, i.e. 1, 2, 3 ...
         index = apply(Y, 2, which.max)

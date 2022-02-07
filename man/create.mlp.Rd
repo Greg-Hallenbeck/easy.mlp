@@ -46,15 +46,7 @@ If not, the final rows are the validation data.}
 An object of class `mlp`
 }
 \description{
-Create a new neural network to fitting tabular data.
-
-The network is initialized randomized weights and should be trained with the `train()` function.
-* Input and output data are normalized, with factor variables one-hot encoded.
-* Handles both regression and classification networks.
-* Splits input dataframe into training and validation data.
-* Customizable hidden layers of fully-connected nodes.
-* ADAM optimizer with minibatch normalization with tunable hyperparameters.
-* Supports user-defined activation functions. See `relu` or `leaky.relu` for examples.
+Create a new neural network to fitting tabular data. The network is initialized randomized weights and should be trained with the `train()` function.
 }
 \examples{
  create.mlp(Species ~ ., data=iris, hidden=c(5,5,5), type="classification")

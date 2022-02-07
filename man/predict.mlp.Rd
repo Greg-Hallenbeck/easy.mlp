@@ -4,7 +4,7 @@
 \alias{predict.mlp}
 \title{Make predictions using the neural network.}
 \usage{
-\method{predict}{mlp}(network, newdata = NULL, type = "numeric")
+\method{predict}{mlp}(network, newdata = "train", type = "numeric")
 }
 \arguments{
 \item{network}{An object of class `mlp` used to make predictions.}

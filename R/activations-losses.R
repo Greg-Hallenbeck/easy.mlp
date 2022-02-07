@@ -2,6 +2,7 @@
 #' @param X A matrix.
 #' @param deriv Set this to TRUE if you want the derivative instead of the function.
 #' @return A matrix representing the RELU(X), or its derivative.
+#' @export
 relu <- function(X, deriv=FALSE)
 {
     if (!deriv) return( pmax(X, 0) )
@@ -13,6 +14,7 @@ relu <- function(X, deriv=FALSE)
 #' @param X A matrix.
 #' @param deriv Set this to TRUE if you want the derivative instead of the function.
 #' @return A matrix representing the leaky RELU(X), or its derivative.
+#' @export
 leaky.relu <- function(X, deriv=FALSE)
 {
     if (!deriv) return(ifelse(X > 0, X, -0.1*X))
@@ -24,6 +26,7 @@ leaky.relu <- function(X, deriv=FALSE)
 #' @param X A matrix.
 #' @param deriv Set this to TRUE if you want the derivative instead of the function.
 #' @return A matrix representing the tanh(X), or its derivative.
+#' @export
 tanh <- function(X, deriv=FALSE)
 {
     p = exp(X)
@@ -38,6 +41,7 @@ tanh <- function(X, deriv=FALSE)
 #' @param X A matrix.
 #' @param deriv Set this to TRUE if you want the derivative instead of the function.
 #' @return X, or its derivative (a matrix of all 1s).
+#' @export
 linear <- function(X, deriv=FALSE)
 {
     if (deriv) return(rep(1.0, length(X)))#matrix(1.0, length(X), nrow=nrow(X), ncol=ncol(X)))
@@ -49,6 +53,7 @@ linear <- function(X, deriv=FALSE)
 #' @param X A matrix.
 #' @param deriv Set this to TRUE if you want the derivative instead of the function.
 #' @return A matrix representing the sigmoid(X), or its derivative.
+#' @export
 sigmoid <- function(X, deriv=FALSE)
 {
     s = (1+exp(-X))**-1
@@ -62,6 +67,7 @@ sigmoid <- function(X, deriv=FALSE)
 #' @param X A matrix.
 #' @param deriv Set this to TRUE if you want the derivative instead of the function.
 #' @return An matrix representing the probability of each class for each observation.
+#' @export
 softmax <- function(X, deriv=FALSE)
 {
     # Calculate Boltzmann Factor (e^X) for each entry
@@ -77,6 +83,7 @@ softmax <- function(X, deriv=FALSE)
 #' @param A a vector of predicted Y values.
 #' @param Y the true Y values.
 #' @return The floating-point loss for the network.
+#' @export
 mse.loss <- function(A, Y)
 {
     loss = mean((Y-A)**2)
@@ -87,6 +94,7 @@ mse.loss <- function(A, Y)
 #' @param A a vector of predicted Y values.
 #' @param Y the true Y values.
 #' @return The floating-point loss for the network.
+#' @export
 logit.loss <- function(A, Y)
 {
     loss = -1/length(Y)*sum(Y*log(A)+(1-Y)*log(1-A))
@@ -97,6 +105,7 @@ logit.loss <- function(A, Y)
 #' @param A a matrix of probabilities.
 #' @param Y the true Y values.
 #' @return The floating-point loss for the network.
+#' @export
 cce.loss <- function(A, Y)
 {
     # Sums -Y_i log A_i over all i categories
