@@ -4,7 +4,7 @@
 \alias{predict.mlp}
 \title{Make predictions using the neural network.}
 \usage{
-\method{predict}{mlp}(network, newdata = "train", type = "numeric")
+\method{predict}{mlp}(network, newdata = "train", type = NULL)
 }
 \arguments{
 \item{network}{An object of class `mlp` used to make predictions.}
@@ -13,7 +13,7 @@
 If left NULL, the training data will be used.
 If set to "valid", the validation data will be used.}
 
-\item{type}{If set to "numeric", then predicted numeric values (regression), probabilities (logistic), or a matrix of probability for each class (classification) is returned. For a classification network, type="labels" can be used to return the class with the highest probability.}
+\item{type}{What should be returned. If set to "numeric", then predicted numeric values (regression), probabilities (logistic), or a matrix of probability for each class (classification) is returned. For a classification network, type="labels" can be used to return the class with the highest probability.}
 }
 \value{
 A vector (or matrix, for a classification network) of the predicted outputs.
