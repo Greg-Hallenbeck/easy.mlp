@@ -76,7 +76,9 @@ data as well as new data. For classification tasks, it can return either
 numeric probabilities for each category or labels, as requested.
 
 ``` r
-predict(net, newdata=iris[1:10,], type="labels")
-#>  [1] setosa setosa setosa setosa setosa setosa setosa setosa setosa setosa
+new.obs <- data.frame(Sepal.Length=4.5, Sepal.Width=4.0, Petal.Length=2.0, Petal.Width=1.5)
+
+predict(net, newdata=new.obs, type="labels")
+#> [1] setosa
 #> Levels: setosa versicolor virginica
 ```
