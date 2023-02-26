@@ -10,7 +10,7 @@
 #'    predict(network, newdata="valid", type="labels")
 #'    predict(network, newdata=test.data)
 #' @export
-predict.mlp <- function(network, newdata="train", type=NULL)
+predict.mlp <- function(network, newdata=NULL, type="numeric")
 {
     one.row = FALSE
     
@@ -44,8 +44,10 @@ predict.mlp <- function(network, newdata="train", type=NULL)
     
     # For a regression network, un-scale the output
     if (network$type == "regression")
+    {
         Y = Y * network$train$sigma.y + network$train$xbar.y
-
+    }
+        
     # This is used to put labels on the output
     # Instead of returning a one-hot encoded Y vector
     if (type == "labels" | type == "class" | type == "response")
